@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+
+import http from '@/http/index';
 
 export default {
     data() {
@@ -32,7 +33,7 @@ export default {
     },
     methods: {
         login() {
-            axios.post('http://localhost:8000/auth/login', this.usuario)
+            http.post('auth/login', this.usuario)
                 .then(res => {
                     console.log(res);
                     localStorage.setItem('token', res.data.access_token);
