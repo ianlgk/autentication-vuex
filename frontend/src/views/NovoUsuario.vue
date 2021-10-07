@@ -20,9 +20,6 @@
 </template>
 
 <script>
-
-import http from '@/http/index';
-
 export default {
     data() {
         return {
@@ -35,7 +32,7 @@ export default {
     },
     methods: {
         enviarFormulario() {
-            http.post('auth/register', this.usuario)
+            this.$http.post('auth/register', this.usuario)
                 .then(res => {
                     console.log(res);
                     this.$router.push({ name: 'login' });

@@ -19,9 +19,6 @@
 </template>
 
 <script>
-
-import http from '@/http/index';
-
 export default {
     data() {
         return {
@@ -33,7 +30,7 @@ export default {
     },
     methods: {
         login() {
-            http.post('auth/login', this.usuario)
+            this.$http.post('auth/login', this.usuario)
                 .then(res => {
                     console.log(res);
                     localStorage.setItem('token', res.data.access_token);
