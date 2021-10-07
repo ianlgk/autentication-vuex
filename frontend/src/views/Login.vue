@@ -1,0 +1,45 @@
+<template>
+    <div class="container">
+        <h1>Login</h1>
+        <form @submit.prevent="login()">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" v-model="usuario.email">
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" v-model="usuario.senha">
+            </div>
+            <button type="submit" class="btn btn-primary brn-block">Logar</button>
+            <router-link :to="{ name: 'novo.usuario' }">
+                Ainda não está cadastrado? Cadastre-se aqui!
+            </router-link>
+        </form>
+    </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+    data() {
+        return {
+            usuario: {
+                email: '',
+                senha: ''
+            }
+        }
+    },
+    methods: {
+        login() {
+            axios.post('http://localhost:8000/auth/login', this.usuario)
+                .then(res => {
+                    console.log(res);
+                    localStorage.setItem('token', res.data.access_token);
+                    this.$router.push({ name: 'gerentes' });
+                })
+                .catch(err => console.log(err));
+        }
+    }
+}
+</script>
