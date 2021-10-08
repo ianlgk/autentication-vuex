@@ -33,7 +33,7 @@ I'm gonna show you one by one what are their purpose:
 2. git clone     : clone the repository on your local machine
 3. cd 'file_name': enter on the 'file_name' directory
 4. npm install: install all project's dependecies
-5. cd ..: return one directory
+5. cd '..': return one directory
 
 ## ☕ How can I use it?
 Since you have the project on your machine and all dependecies installed, follow this steps to run the project:
