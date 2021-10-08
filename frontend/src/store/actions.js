@@ -1,26 +1,6 @@
-import Vuex from 'vuex'
-import Vue from 'vue'
 import http from '@/http'
 
-Vue.use(Vuex)
-
-const estado = {
-    token: null,
-    usuario: {}
-}
-
-const mutations = {
-    DEFINIR_USUARIO_LOGADO(state, { token, usuario }) {
-        state.usuario = usuario
-        state.token = token
-    },
-    DESLOGAR_USUARIO(state) {
-        state.token = null
-        state.usuario = {}
-    }
-}
-
-const actions = {
+export const actions = {
     loginUsuario({ commit }, usuario) {
         return new Promise((resolve, reject) => {
             http.post('auth/login', usuario)
@@ -29,6 +9,7 @@ const actions = {
                         token: res.data.access_token,
                         usuario: res.data.user
                     })
+                    localStorage.setItem('token', res.data.access_token)
                     resolve(res.data)
                 })
                 .catch((err) => {
@@ -38,9 +19,3 @@ const actions = {
         })
     }
 }
-
-export default new Vuex.Store({
-    state: estado,
-    mutations,
-    actions
-})

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import Provedor from './Provedor'
+import store from './store/index'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -13,6 +13,6 @@ Vue.prototype.$http = http
 
 new Vue({
   router,
-  store: Provedor,
+  store,
   render: h => h(App)
 }).$mount('#app')

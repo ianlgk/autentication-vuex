@@ -12,7 +12,7 @@
             <a
                 href="#"
                 class="nav-link"
-                @click.prevent="logout()"
+                @click.prevent="logoutUsuario"
             >
                 Logout
             </a>
@@ -21,12 +21,9 @@
 </template>
 
 <script>
+import { logoutMixin } from '../mixins'
+
 export default {
-    methods: {
-        logout() {
-            this.$store.commit('DESLOGAR_USUARIO')
-            this.$router.push({ name: 'login' });
-        }
-    }
+    mixins: [logoutMixin]
 }
 </script>

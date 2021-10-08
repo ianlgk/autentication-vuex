@@ -1,5 +1,5 @@
 import axios from 'axios'
-import provedor from '@/Provedor'
+import provedor from '../store/index'
 
 const http = axios.create({
     baseURL: 'http://localhost:8000',
