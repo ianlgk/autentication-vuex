@@ -5,16 +5,15 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <NavbarLogin v-if="usuarioLogado" />
-        <NavbarLogout v-else/>
-
+        <NavbarLogin v-if="isUsuarioLogado" />
+        <NavbarLogout v-else />
       </div>
     </nav>
 </template>
 
 <script>
-import NavbarLogin from './NavbarLogin.vue'
-import NavbarLogout from './NavbarLogout.vue'
+import NavbarLogin from '../components/NavbarLogin.vue'
+import NavbarLogout from '../components/NavbarLogout.vue'
 
 export default {
     components: {
@@ -22,8 +21,8 @@ export default {
         NavbarLogout
     },
     computed: {
-        usuarioLogado() {
-            return Boolean(localStorage.getItem('token'))
+        isUsuarioLogado() {
+            return Boolean(this.$store.state.token)
         }
     }
 }

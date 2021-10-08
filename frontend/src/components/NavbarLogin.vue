@@ -9,13 +9,13 @@
             </router-link>
         </li>
         <li>
-        <a
-            href="#"
-            class="nav-link"
-            @click.prevent="logout()"
-        >
-            Logout
-        </a>
+            <a
+                href="#"
+                class="nav-link"
+                @click.prevent="logout()"
+            >
+                Logout
+            </a>
         </li>
     </ul>
 </template>
@@ -24,9 +24,9 @@
 export default {
     methods: {
         logout() {
-            localStorage.removeItem('token');
+            this.$store.commit('DESLOGAR_USUARIO')
             this.$router.push({ name: 'login' });
         }
-    },
+    }
 }
 </script>
